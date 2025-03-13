@@ -1,6 +1,10 @@
 // Keep this file in sync with https://github.com/supabase/ssr/blob/main/src/createServerClient.ts
 
-import { createClient, UpdateSupabaseClient } from '@updatedev/js/supabase';
+import {
+  createClient,
+  UpdateSupabaseClient,
+  UpdateSupabaseClientOptions,
+} from '@updatedev/js/supabase';
 import { AuthChangeEvent, SupabaseClientOptions } from '@supabase/supabase-js';
 import { GenericSchema } from '@supabase/supabase-js/dist/module/lib/types';
 import {
@@ -31,6 +35,7 @@ export const createServerClient = <
       getAll: GetAllCookies;
       setAll?: SetAllCookies;
     };
+    update?: UpdateSupabaseClientOptions;
     supabase?: SupabaseClientOptions<SchemaName> & {
       cookieOptions?: CookieOptionsWithName;
       cookieEncoding?: 'raw' | 'base64url';
@@ -88,6 +93,7 @@ export const createServerClient = <
         getAll: options?.cookies?.getAll,
         setAll: options?.cookies?.setAll,
       },
+      update: options?.update,
       supabase: supabaseOptions,
     }
   );

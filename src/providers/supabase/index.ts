@@ -1,2 +1,2 @@
-export * from "./createServerClient";
-export * from "./createBrowserClient";
+export { createServerClient } from './createServerClient';
+export { createBrowserClient } from './createBrowserClient';

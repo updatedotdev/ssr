@@ -1,6 +1,10 @@
 // Keep this file in sync with https://github.com/supabase/ssr/blob/main/src/createBrowserClient.ts
 
-import { createClient, UpdateSupabaseClient } from '@updatedev/js/supabase';
+import {
+  createClient,
+  UpdateSupabaseClient,
+  UpdateSupabaseClientOptions,
+} from '@updatedev/js/supabase';
 import { SupabaseClientOptions } from '@supabase/supabase-js';
 import {
   CookieOptionsWithName,
@@ -31,6 +35,7 @@ export const createBrowserClient = <
       getAll: GetAllCookies;
       setAll: SetAllCookies;
     };
+    update?: UpdateSupabaseClientOptions;
     supabase?: SupabaseClientOptions<SchemaName> & {
       cookieOptions?: CookieOptionsWithName;
       cookieEncoding?: 'raw' | 'base64url';
@@ -92,6 +97,7 @@ export const createBrowserClient = <
     supabaseUrl,
     supabaseAnonKey,
     {
+      update: options?.update,
       storage: {
         getAll: options?.cookies?.getAll,
         setAll: options?.cookies?.setAll,
