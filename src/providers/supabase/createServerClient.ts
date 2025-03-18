@@ -18,6 +18,18 @@ import {
   SetAllCookies,
 } from '@supabase/ssr';
 
+type CreateServerClientOptions<SchemaName> =
+  UpdateSupabaseClientOptions<SchemaName> & {
+    cookies?: {
+      getAll: GetAllCookies;
+      setAll?: SetAllCookies;
+    };
+    supabase?: SupabaseClientOptions<SchemaName> & {
+      cookieOptions?: CookieOptionsWithName;
+      cookieEncoding?: 'raw' | 'base64url';
+    };
+  };
+
 export const createServerClient = <
   Database = any,
   SchemaName extends string & keyof Database = 'public' extends keyof Database
@@ -30,17 +42,7 @@ export const createServerClient = <
   updateApiKey: string,
   supabaseUrl: string,
   supabaseAnonKey: string,
-  options?: {
-    cookies?: {
-      getAll: GetAllCookies;
-      setAll?: SetAllCookies;
-    };
-    update?: UpdateSupabaseClientOptions;
-    supabase?: SupabaseClientOptions<SchemaName> & {
-      cookieOptions?: CookieOptionsWithName;
-      cookieEncoding?: 'raw' | 'base64url';
-    };
-  }
+  options?: CreateServerClientOptions<SchemaName>
 ): UpdateSupabaseClient<Database, SchemaName, Schema> => {
   if (!updateApiKey) {
     throw new Error('An Update API Key is required');
@@ -89,11 +91,11 @@ export const createServerClient = <
     supabaseUrl,
     supabaseAnonKey,
     {
+      ...options,
       storage: {
         getAll: options?.cookies?.getAll,
         setAll: options?.cookies?.setAll,
       },
-      update: options?.update,
       supabase: supabaseOptions,
     }
   );
