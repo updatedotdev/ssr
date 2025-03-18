@@ -18,6 +18,19 @@ import { isBrowser } from '@supabase/ssr/dist/main/utils';
 
 let cachedBrowserClient: UpdateSupabaseClient<any, any, any> | undefined;
 
+type CreateBrowserClientOptions<SchemaName> =
+  UpdateSupabaseClientOptions<SchemaName> & {
+    cookies?: {
+      getAll: GetAllCookies;
+      setAll: SetAllCookies;
+    };
+    supabase?: SupabaseClientOptions<SchemaName> & {
+      cookieOptions?: CookieOptionsWithName;
+      cookieEncoding?: 'raw' | 'base64url';
+      isSingleton?: boolean;
+    };
+  };
+
 export const createBrowserClient = <
   Database = any,
   SchemaName extends string & keyof Database = 'public' extends keyof Database
@@ -30,18 +43,7 @@ export const createBrowserClient = <
   updateApiKey: string,
   supabaseUrl: string,
   supabaseAnonKey: string,
-  options?: {
-    cookies?: {
-      getAll: GetAllCookies;
-      setAll: SetAllCookies;
-    };
-    update?: UpdateSupabaseClientOptions;
-    supabase?: SupabaseClientOptions<SchemaName> & {
-      cookieOptions?: CookieOptionsWithName;
-      cookieEncoding?: 'raw' | 'base64url';
-      isSingleton?: boolean;
-    };
-  }
+  options?: CreateBrowserClientOptions<SchemaName>
 ): UpdateSupabaseClient<Database, SchemaName, Schema> => {
   // singleton client is created only if isSingleton is set to true, or if isSingleton is not defined and we detect a browser
   const shouldUseSingleton =
@@ -97,7 +99,7 @@ export const createBrowserClient = <
     supabaseUrl,
     supabaseAnonKey,
     {
-      update: options?.update,
+      ...options,
       storage: {
         getAll: options?.cookies?.getAll,
         setAll: options?.cookies?.setAll,
