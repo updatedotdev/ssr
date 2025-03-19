@@ -1,6 +1,6 @@
 {
   "name": "@updatedev/ssr",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Update SSR SDK",
   "main": "./dist/index.js",
   "files": [
@@ -61,7 +61,7 @@
   "dependencies": {
     "@supabase/ssr": "^0.5.2",
     "@supabase/supabase-js": "^2.49.1",
-    "@updatedev/js": "^0.2.1",
+    "@updatedev/js": "^0.2.2",
     "cookie": "^1.0.2"
   }
 }
