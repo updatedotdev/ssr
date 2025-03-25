@@ -15,8 +15,8 @@ importers:
         specifier: ^2.49.1
         version: 2.49.1
       '@updatedev/js':
-        specifier: ^0.2.2
-        version: 0.2.2
+        specifier: ^0.3.0
+        version: 0.3.0
       cookie:
         specifier: ^1.0.2
         version: 1.0.2
@@ -457,8 +457,8 @@ packages:
     resolution: {integrity: sha512-uqi/2aSz9g2ftcHWf8uLPJA70rUv6yuMW5Bohw+bwcuzaxQIHaKFZCKGoGXIrc9vkTJ3+0txM73K0Hq3d5wgIg==}
     engines: {node: ^8.10.0 || ^10.13.0 || >=11.10.1}
 
-  '@updatedev/js@0.2.2':
-    resolution: {integrity: sha512-h9mWl3CzqalA1eg7TM9R+6yr0e6fkhX8yA7w8k0WL5f7FtiMN1my22Dcq4L0YEXdajRK8vnUKOdjhK76ZsERWQ==}
+  '@updatedev/js@0.3.0':
+    resolution: {integrity: sha512-/uV4KcosBiK3eNa0t0ydAP1XgXyrPtNjzynq6UIpnCYGKfzotNbsZjPmWdOXFjZPI1XbAML8o7epVDtJ6SjSIg==}
     engines: {node: '>=12.0'}
 
   acorn-jsx@5.3.2:
@@ -1653,7 +1653,7 @@ snapshots:
       '@typescript-eslint/types': 4.33.0
       eslint-visitor-keys: 2.1.0
 
-  '@updatedev/js@0.2.2':
+  '@updatedev/js@0.3.0':
     dependencies:
       '@supabase/auth-js': 2.68.0
       '@supabase/supabase-js': 2.49.1
