@@ -1,8 +1,25 @@
 {
   "name": "@updatedev/ssr",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "Update SSR SDK",
   "main": "./dist/index.js",
+  "homepage": "https://update.dev",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/updatedotdev/ssr.git"
+  },
+  "bugs": {
+    "url": "https://github.com/updatedotdev/ssr/issues"
+  },
+  "keywords": [
+    "update",
+    "update.dev",
+    "auth",
+    "billing",
+    "saas",
+    "sdk",
+    "ssr"
+  ],
   "files": [
     "dist/**/*"
   ],
@@ -24,10 +41,6 @@
     "build:declarations": "tsc -p tsconfig.declarations.json",
     "prepublishOnly": "npm run build"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/updatedotdev/ssr.git"
-  },
   "license": "MIT",
   "author": {
     "name": "Update Team",
@@ -37,14 +50,6 @@
   "engines": {
     "node": ">=12.0"
   },
-  "keywords": [
-    "update",
-    "sdk"
-  ],
-  "bugs": {
-    "url": "https://github.com/updatedotdev/ssr/issues"
-  },
-  "homepage": "https://github.com/updatedotdev/ssr#readme",
   "devDependencies": {
     "@types/node": "^12.20.11",
     "@typescript-eslint/eslint-plugin": "^4.22.0",
@@ -61,7 +66,7 @@
   "dependencies": {
     "@supabase/ssr": "^0.5.2",
     "@supabase/supabase-js": "^2.49.1",
-    "@updatedev/js": "^0.3.3",
+    "@updatedev/js": "^0.3.4",
     "cookie": "^1.0.2"
   }
 }
